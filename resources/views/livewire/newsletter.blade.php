@@ -13,8 +13,12 @@
             <x-form-error for="subject" name="subject" />
         </div>
         <div class="mb-4">
-            <x-form-button type="submit">Send Newsletter</x-form-button>
+            <x-form-button type="submit">Newsletter verschicken</x-form-button>
         </div>
-
     </form>
+    @if(session()->has('newsletterMessage'))
+        <div class="bg-success-green p-4 text-center mx-auto">
+            {{ session('newsletterMessage') }}
+        </div>
+    @endif
 </div>

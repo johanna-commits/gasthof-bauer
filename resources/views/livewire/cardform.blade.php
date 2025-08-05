@@ -53,7 +53,7 @@
 
                 <x-form-button class="mt-4" id="saveFood" type="submit">Speise hinzufügen</x-form-button>
                 @if(session()->has('newDishMessage'))
-                <div class="bg-primary p-2 mt-4 w-2/3 mx-auto">
+                <div class="bg-success-green p-2 mt-4 w-2/3 mx-auto">
                     {{ session('newDishMessage') }}
                 </div>
                 @endif
@@ -64,7 +64,8 @@
     <h2 class="text-xl font-bold mt-8 text-center mb-4">alle Gerichte</h2>
 
     @foreach($dishes as $dish)
-    <form wire:submit.prevent="updateFood({{ $dish->id }})" class="w-full lg:w-2/3 mx-auto p-8" id="foodform-{{ $dish->id }}">
+        <div class="border-2 border-primary p-2 w-full lg:w-2/3 mb-4">
+    <form wire:submit.prevent="updateFood({{ $dish->id }})" class="  mx-auto p-8" id="foodform-{{ $dish->id }}">
         <div class="mb-4">
             <label for="food-name-{{ $dish->id }}" class="block text-sm font-medium text-gray-700">Speisenname</label>
             <x-form-input wire:model="changeFoodName.{{ $dish->id }}" name="changeFoodName"
@@ -113,19 +114,20 @@
             <x-form-error name="changeCardType.{{ $dish->id }}" />
         </div>
 
-
         <x-form-button class="mt-2" id="updateFood-{{ $dish->id }}" type="submit">Speise ändern</x-form-button>
     </form>
         @if(session()->has('dishMessage.' . $dish->id))
-            <div class="bg-primary p-2 mt-4">
+            <div class="bg-success-green p-2 mt-4">
                 {{ session('dishMessage.' . $dish->id) }}
             </div>
         @endif
-        <button wire:click="deleteFood({{ $dish->id }})" wire:confirm="Willst du wirklich die Speise löschen?" class="bg-red-400 p-1 pl-4 pr-4 border border-red-500 hover:bg-red-100">Gericht löschen</button>
+            <div class="flex w-full justify-end flex-end  mx-auto pr-8 pb-4">  <button wire:click="deleteFood({{ $dish->id }})" wire:confirm="Willst du wirklich die Speise löschen?" class="bg-red-400 p-1 pl-4 pr-4 border border-red-500 hover:bg-red-100">Gericht löschen</button>
+            </div>
         @if(session()->has('dishDeleteMessage.' . $dish->id))
-            <div class="bg-primary p-2 mt-4">
+            <div class="bg-success-green p-2 mt-4">
                 {{ session('dishDeleteMessage.' . $dish->id) }}
             </div>
         @endif
+        </div>
     @endforeach
 </div>

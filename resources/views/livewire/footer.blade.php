@@ -55,7 +55,7 @@
             <x-form-button id="saveCostumer" type="submit" class="cursor-pointer">Absenden</x-form-button>
         </form>
         @if(session()->has('costumerMessage'))
-            <div class="bg-primary p-2 mt-4 ">
+            <div class="bg-success-green p-2 mt-4 ">
                <p>{{ session('costumerMessage') }}</p>
             </div>
         @endif

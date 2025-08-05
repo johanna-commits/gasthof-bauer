@@ -35,7 +35,7 @@
                 @foreach($news as $newsItem)
                     <div class="bg-amber-50 border-2 border-primary p-4 mb-6 w-full max-w-xl text-center">
                         <h3 class="text-xl font-bold mb-2">{{ $newsItem->title }}</h3>
-                        <p class="mb-4">{{ $newsItem->content }}</p>
+                        <p class="mb-4">{!! nl2br(e($newsItem->content)) !!}</p>
                         @if(!empty($newsItem->image))
                             <img src="{{ url('storage/' . $newsItem->image) }}" alt="{{ $newsItem->title }}" class="mx-auto max-w-full h-auto rounded">
                         @endif
@@ -46,7 +46,7 @@
 
     @if(!empty($menus) && $menus ==! null)
     <div class="flex flex-col items-center mb-12 justify-center space-y-4 pt-8 lg:pt-24">
-        <h3 class="text-3xl lg:text-5xl font-accent mb-2">Mittagsmenü</h3>
+        <h3 class="text-3xl lg:text-5xl font-accent mb-4">Mittagsmenü</h3>
 
         @if(!empty($menus[1]['date']) && !empty($menus[3]['date']))
         <h4 class="text-3xl font-accent font-thin pl-4">{{ $menus[1]['date'] ?? '' }} - {{ $menus[3]['date'] ?? '' }}

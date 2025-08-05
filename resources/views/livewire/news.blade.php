@@ -13,12 +13,11 @@
         </div>
         <x-form-error name="content" />
         <div class="flex justify-center space-x-8">
-            <button class="bg-red-200 p-2 px-6" wire:click="deleteNews" type="submit">Neuigkeiten Löschen</button>
             <x-form-button class="bg-primary p-2 px-6 " type="submit">Neuigkeiten Speichern</x-form-button>
         </div>
     </form>
     @if(session()->has('message'))
-        <div class="bg-lime-200 p-4 text-center mx-auto">
+        <div class="bg-success-green p-4 text-center mx-auto">
             {{ session('message') }}
         </div>
     @endif
@@ -27,7 +26,7 @@
     @foreach($currentNews as $news)
     <div class="w-full lg:w-1/2 mx-auto bg-primary/40 p-4 m-4">
         <h2>{{ $news->title }}</h2>
-        <p>{{ $news->content }}</p>
+        <p>{!! nl2br(e($news->content)) !!}</p>
         <button wire:click="deleteNews({{ $news->id }})" wire:confirm="Willst du wirklich die News löschen?" class="bg-red-300 mt-2 p-1 pl-4 pr-4 border border-red-500 hover:bg-red-100">Neuigkeit löschen</button>
     </div>
     @endforeach

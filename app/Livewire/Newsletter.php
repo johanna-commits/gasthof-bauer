@@ -28,16 +28,16 @@ class Newsletter extends Component
 
         $subscribers = Customer::all();
 
-        /*foreach ($subscribers as $subscriber) {
+        foreach ($subscribers as $subscriber) {
             Mail::to($subscriber->email)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter));
-        }*/
-        Mail::to($mail)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter));
+        }
+        //Mail::to($mail)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter));
 
         $this->newsletter = '';
         $this->subject = '';
         $this->title = '';
 
-        session()->flash('message', 'Newsletter versendet!');
+        session()->flash('newsletterMessage', 'Newsletter versendet!');
     }
 
     public function render()

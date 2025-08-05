@@ -25,14 +25,17 @@ class Cardform extends Component
 
     public function mount()
     {
-        $this->dishes = FoodCard::all(); // Hol die Speisen
+        $this->getDishes();
+    }
+
+    public function getDishes(){
+        $this->dishes = FoodCard::orderBy('cardType')->get();
         foreach ($this->dishes as $dish) {
-            $this->changeFoodName[$dish->id] = $dish->name; // Fülle die Arrays mit bestehenden Werten
+            $this->changeFoodName[$dish->id] = $dish->name;
             $this->changeFoodDescription[$dish->id] = $dish->description;
             $this->changeFoodPrice[$dish->id] = $dish->price;
             $this->changeCategory[$dish->id] = $dish->category;
             $this->changeCardType[$dish->id] = $dish->cardType;
-            //dd($dish);
         }
     }
 
@@ -61,7 +64,8 @@ class Cardform extends Component
         $this->price = '';
         $this->category = '';
         $this->cardType = '';
-        // $this->resetInputFields();
+
+        $this->getDishes();
     }
 
     public function updateFood($dishId)
@@ -87,6 +91,7 @@ class Cardform extends Component
         } else {
             session()->flash('dishMessage.' . $dishId, 'Speise nicht gefunden!');
         }
+        $this->getDishes();
     }
 
     public function deleteFood($dishId)
@@ -98,6 +103,7 @@ class Cardform extends Component
         } else {
             session()->flash('dishDeleteMessage.' . $dishId, 'Speise nicht gefunden!');
         }
+        $this->getDishes();
     }
 
     public function render()
@@ -106,10 +112,4 @@ class Cardform extends Component
             'dishes' => $this->dishes,
         ]);
     }
-
-    // return view('livewire.home', [
-    //     'watchlistMovies' => $watchlistMovies,
-    //     'newMovies' => $newMovies,
-    //     'dramaMovies' => $dramaMovies,
-    // ]);
 }

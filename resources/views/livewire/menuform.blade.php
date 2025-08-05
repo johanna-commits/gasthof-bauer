@@ -117,7 +117,7 @@
         </div>
     </form>
     @if(session() ->has('message'))
-    <div class="bg-green-300 p-2 mt-4">
+    <div class="bg-success-green p-2 mt-4">
         {{ session('message') }}
     </div>
     @endif

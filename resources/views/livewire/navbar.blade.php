@@ -49,10 +49,34 @@
                                 <a class="transition underline-link duration-200 hover:ease-in-out focus:text-black/80 focus:underline-link active:underline-link active:text-black/80 motion-reduce:transition-none lg:px-2 {{ request()->is('menü') ? 'underline-link is-active' : '' }}"
                                    href="/menü" data-twe-nav-link-ref>Mittagsmenü</a>
                             </li>
-                            <li class="mb-4 lg:mb-0 lg:pe-2 border-b-2 border-b-white/50 lg:border-0" data-twe-nav-item-ref>
-                                <a class=" transition underline-link duration-200 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none  lg:px-2 {{ request()->is('speisekartenübersicht') ? 'underline-link is-active' : '' }}"
-                                   href="/speisekartenübersicht" data-twe-nav-link-ref>Speisekarte</a>
+                            <li class="relative group">
+                                <a
+                                    href="/speisekartenübersicht"
+                                    class="inline-flex items-center gap-1 lg:px-2 py-2 text-black"
+                                >
+                                    Speisekarten
+                                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </a>
+                            <!-- Dropdown-Menü -->
+                                <ul
+                                    class="absolute left-0 z-50 w-48 bg-white shadow-lg  py-2 border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+                                >
+                                    <li>
+                                        <a href="/speisekarte/normal" class="block px-4 py-2 hover:bg-primary-light">Mittagskarte</a>
+                                    </li>
+                                    <li>
+                                        <a href="/speisekarte/abend" class="block px-4 py-2 hover:bg-primary-light">Abendkarte</a>
+                                    </li>
+                                    <li>
+                                        <a href="/speisekarte/snack" class="block px-4 py-2 hover:bg-primary-light">Jausenkarte</a>
+                                    </li>
+                                </ul>
                             </li>
+
                             <li class="mb-4 lg:mb-0 lg:pe-2 border-b-2 border-b-white/50 lg:border-0" data-twe-nav-item-ref>
                                 <a class=" transition underline-link duration-200 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2 {{ request()->is('nächtigen') ? 'underline-link is-active' : '' }}"
                                    href="/nächtigen" data-twe-nav-link-ref>Nächtigen</a>
