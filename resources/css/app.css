@@ -1,3 +1,4 @@
+@import 'photoswipe/style.css';
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 
@@ -6,10 +7,9 @@
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Open Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-accent: 'Shadows Into Light', cursive;
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
@@ -26,41 +26,264 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    --color-primary: #FBD56E;
+    --color-secondary: #2A271C;
+    --color-accent: #E4A86F;
+    --color-primary-light: #FDF4DF;
+    --color-background: #FCFCFA;
 }
 
-@layer theme {
-    .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+body {
+    font-family: "Sans", sans-serif;
+}
+
+.navbar {
+    transition: top 1.5s;
+}
+
+a.underline-link {
+    position: relative; /* Positionierung relativ zum Link selbst */
+    display: inline-block; /* Notwendig, damit das Pseudo-Element den Text umschließt */
+}
+
+a.underline-link:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.375rem;
+    height: 0.125rem;
+    width: 0;
+    background-color: currentColor; /* Farbe des Unterstrichs entsprechend der Textfarbe */
+    transition-property: width, background-color; /* Übergang für Breite und Hintergrundfarbe */
+    transition-duration: 0.2s; /* Dauer des Übergangs */
+    transition-timing-function: cubic-bezier(
+        0.4,
+        0,
+        0.2,
+        1
+    ); /* Timing-Funktion für die Animation */
+}
+
+a.underline-link:hover:after {
+    width: 100%; /* Volle Breite bei Hover */
+}
+
+a.underline-link:focus:after {
+    width: 100%; /* Volle Breite bei Fokus */
+}
+
+.underline-link.is-active::after {
+    width: 100%; /* Unterstrich auf voller Breite */
+}
+
+.pswp__img{
+    width: auto!important;
+}
+
+/*.pswp__zoom-wrap{
+    position: absolute;
+    left: 25%!important;
+    transform: translateX(-50%)!important;
+}*/
+
+/* Keyframes für das Einblenden */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Beginnt leicht unten */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Endet an der richtigen Position */
     }
 }
 
-@layer base {
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 3s ease-out forwards;
+}
 
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.kastanien-image {
+    z-index: 30;
+    transform: rotate(60deg);
+    transition: transform 0.2s ease-out;
+}
+
+
+.kastanien-image-container {
+    position: absolute;
+    z-index: 30;
+}
+
+/* Standardgröße */
+.kastanien-image {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+}
+
+/* Größere Bildschirme (z.B. Tablets) */
+@media (min-width: 768px) {
+    .kastanien-image {
+        width: 150px;
+        height: 150px;
     }
 }
 
-[data-flux-field]:not(ui-radio, ui-checkbox) {
-    @apply grid gap-2;
+/* Noch größere Bildschirme (z.B. Desktops) */
+@media (min-width: 1024px) {
+    .kastanien-image {
+        width: 220px;
+        height: 220px;
+    }
 }
 
-[data-flux-label] {
-    @apply  !mb-0 !leading-tight;
+/* Große Desktops */
+@media (min-width: 1440px) {
+    .kastanien-image {
+        width: 230px;
+        height: 230px;
+    }
 }
 
-input:focus[data-flux-control],
-textarea:focus[data-flux-control],
-select:focus[data-flux-control] {
-    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+.bg-kastanie {
+    background-image: url('/public/images/Kastanienblatt2weiß.png'); /* Hintergrundbild */
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+.bg-kastanie-transparent {
+    background-image: url('/public/images/Kastanienblatt2_halbtransparent.png'); /* Hintergrundbild */
+}
+
+.menuCard:hover .kastanienimg {
+    transform: rotate(360deg);
+    transition: transform 1s ease-out;
+}
+
+/* Container für die Bildergalerie */
+@media (min-width: 1024px) {
+    .gallery {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        height: 800px;
+    }
+
+    .gallery-slide {
+        /*display: inline-block;*/
+        animation: 40s slide-vertical infinite linear;
+    }
+}
+
+@keyframes slide-horizontal {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-vertical {
+    from {
+        transform: translateY(100);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+
+
+.gallery {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.gallery-slide:hover .gallery-slide {
+    animation-play-state: paused;
+}
+
+
+
+@media (max-width: 1024px) {
+    .gallery {
+        overflow: hidden;
+        padding: 60px 0;
+        background: white;
+        white-space: nowrap;
+        position: relative;
+        display: flex;
+    }
+
+
+
+    .gallery-slide {
+        display: flex;
+        animation: 35s slide-horizontal infinite linear;
+    }
+
+    .gallery-slide img {
+        height: 200px;
+        padding: 20px 40px;
+    }
+}
+
+.gallery-slide img {
+    width: auto;
+    padding: 20px 40px;
+}
+
+
+.zoom-image {
+    transition: transform 2s ease;
+}
+
+.zoomed {
+    transform: scale(1.2); /* Skalierung auf 120% */
+    z-index: 5;
+}
+
+.text-zoomed {
+    /* Standard-Stile */
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 2px solid #fbd56e57;
+    z-index: 6;
+    position: relative;
+    padding: 20px;
+    animation: 2s textMove forwards; /* Einblenden mit Animation */
+}
+
+/* Standard-Animation für kleine Bildschirme oder ohne Media Query */
+@keyframes textMove {
+    from {
+        transform: translateX(0px); /* Beginnt ohne X-Translation */
+    }
+    to {
+        transform: translateX(0px); /* Endet ohne X-Translation */
+    }
+}
+
+/* Media Query für größere Bildschirme (z. B. ab 1024px) */
+@media (min-width: 1024px) {
+    .text-zoomed {
+        animation: 2s textMove forwards; /* Einblenden mit Animation */
+    }
+
+    /* Keyframes für größere Bildschirme */
+    @keyframes textMove {
+        from {
+            transform: translateX(0px); /* Beginnt leicht unten */
+        }
+        to {
+            transform: translateX(30px); /* Endet an der richtigen Position */
+        }
+    }
+}
