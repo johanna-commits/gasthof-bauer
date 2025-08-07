@@ -1,15 +1,10 @@
 <div class="flex flex-col">
-    <div class="flex flex-col lg:flex-row lg:h-[80vh] lg:mb-24">
+    <div class="lg:flex flex-col lg:flex-row h-screen lg:mb-12 hidden lg:h-[80vh]">
         <div class="lg:relative lg:flex-grow">
             <div class="relative h-full">
-                <!-- Bild -->
                 <img src="{{ asset('images/Schild.png') }}" alt="Tisch" class="object-cover w-full h-full lg:w-full"
                     loading="lazy" />
-
-                <!-- Schwarzes Overlay mit 70% Transparenz -->
                 <div class="absolute inset-0 bg-black opacity-30"></div>
-
-                <!-- Weißer Text über dem Bild -->
                 <div class="absolute inset-0 flex flex-col justify-center">
                     <h1
                         class="text-accent text-3xl md:text-7xl lg:text-9xl lg:self-start p:2 md:pt-10 self-start lg:p-10 font-accent lg:pl-24 text-primary fade-in-delay">
@@ -61,7 +56,7 @@
                </div>
     </div>
     <div class="lg:w-2/3 lg:mx-auto p-4">
-        <h2 class="text-2xl lg:text-5xl font-bold font-accent mt-8 mb-4 ">Anreise</h2>
+        <h2 class="text-2xl lg:text-5xl font-bold font-accent lg:mt-8 mb-4 ">Anreise</h2>
         <h3 class="text-xl lg:text-2xl font-semibold mb-2">Von Enns</h3>
         <p class="mb-6">Sie folgen der Ennser Straße (B115) nach Steyr und biegen halb rechts in die Franklin-d.-Roosevelt-Straße (B122) ein und fahren weiter geradeaus auf die Voralpen-Bundesstraße (B122), weiter geradeaus in die Seifentruhe (B122) und biegen links in die Sierninger Straße ein. Verlassen Sie die Sierninger Straße und fahren weiter geradeaus auf die Schwimmschulstraße und biegen dann rechts in die Josefgasse ein.</p>
         <h3 class="text-xl lg:text-2xl font-semibold mb-2">Von Bad Hall</h3>

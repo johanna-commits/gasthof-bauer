@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Customer;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
@@ -20,6 +21,8 @@ use App\Livewire\Impressum;
 use App\Livewire\Data;
 use App\Livewire\Menucards;
 use App\Livewire\RoomsForm;
+use App\Livewire\UnsubscribeForm;
+
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/', Home::class);
@@ -32,7 +35,9 @@ Route::get('/ambiente', Ambiente::class);
 Route::get('/impressum', Impressum::class);
 Route::get('/datenschutz', Data::class);
 Route::get('/speisekartenübersicht', Menucards::class);
-Route::get('/speisekarte/{cardType}', Card::class);
+Route::get('/speisekarte/{cardType}', Card::class);// routes/web.php
+Route::get('/unsubscribe/{token}', UnsubscribeForm::class)->name('unsubscribe');
+
 
 Route::get('/testmail', function () {
     Mail::raw('🎉 Laravel-Mail über Hetzner funktioniert!', function ($message) {
@@ -93,8 +98,9 @@ Route::middleware(['auth'])->group(function () {
 
         Man kann täglich bis 23. Oktober voten.
         Danke für Eure Unterstützung!';
+        $subscriber = Customer::where('is_subscribed', true)->first();
 
-        return new App\Mail\NewsletterMail($subject, $title, $content);
+        return new App\Mail\NewsletterMail($subject, $title, $content, $subscriber);
     });
 
 });

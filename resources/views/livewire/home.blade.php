@@ -1,11 +1,13 @@
 <div>
-    <div class="flex flex-col lg:flex-row min-h-screen! lg:h-screen">
+    <div class="flex flex-col lg:flex-row min-h-screen lg:h-screen">
     <div class="lg:w-60 relative lg:mb-4 flex-shrink-0 lg:p-8 ">
         </div>
-        <div class="bg-gray-600 relative flex-grow">
-            <div class="relative h-full">
+        <div class="relative flex-grow">
+            <div class="relative h-full  flex-grow">
                 <img src="{{ asset('images/Schild.png') }}" alt="Schild"
-                    class="object-cover w-full h-full" loading="lazy" />
+                    class="object-cover w-full h-full hidden lg:flex" loading="lazy" />
+                <img src="{{ asset('images/Schild_Handy2.jpg') }}" alt="Schild"
+                     class="object-cover w-full h-full lg:hidden" loading="lazy" />
                 <div class="absolute inset-0 bg-black opacity-50"></div>
                 <div class="absolute inset-0 flex flex-col justify-center">
                     <h2
@@ -20,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="kastanien-image-container lg:top-1/3 lg:left-24">
+        <div class="kastanien-image-container top-1/3 lg:top-1/3 lg:left-24">
             <img src="{{ asset('images/Kastanienblattfull.png') }}" alt="Kastanien" id="kastanien-image-top"
                 class="bottom-48 left-8 lg:left-36 p-4 lg:ml-24 kastanien-image">
             <img src="{{ asset('images/Kastanienblattfull.png') }}" alt="Kastanien" id="kastanien-image-middle"
@@ -117,8 +119,6 @@
                     <img src="{{ asset('images/Gastgarten.jpg') }}" alt="Bild 2" class="slider-image">
                     <img src="{{ asset('images/Tisch.jpg') }}" alt="Bild 3" class="slider-image">
                     <img src="{{ asset('images/food/Topfenstrudel_Arbeit4.jpg') }}" alt="Topfenstrudel" class="slider-image">
-
-                    <!-- Weitere Bilder hier -->
                 </div>
                 <div class="gallery-slide  lg:flex-col invisible lg:visible">
                     <img src="{{ asset('images/food/Spargelcordaun_Arbeit.jpg') }}" alt="Spargelcordaun" class="slider-image">

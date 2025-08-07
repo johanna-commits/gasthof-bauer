@@ -1,7 +1,7 @@
 
 <div class="navbar bg-white shadow sticky top-0 z-50" id="navbar" x-data="{ open: false }">
     <nav
-        class="bg-primary flex-no-wrap relative flex w-full items-center justify-between sticky top-0 py-2 shadow-dark-mild lg:flex-wrap lg:justify-start lg:py-0">
+        class="bg-primary flex-no-wrap  flex w-full items-center justify-between sticky top-0 py-2 shadow-dark-mild lg:flex-wrap lg:justify-start lg:py-0">
         <div class="flex w-full flex-wrap items-center justify-between">
             <button
                 @click="open = !open"
@@ -49,10 +49,10 @@
                                 <a class="transition underline-link duration-200 hover:ease-in-out focus:text-black/80 focus:underline-link active:underline-link active:text-black/80 motion-reduce:transition-none lg:px-2 {{ request()->is('menü') ? 'underline-link is-active' : '' }}"
                                    href="/menü" data-twe-nav-link-ref>Mittagsmenü</a>
                             </li>
-                            <li class="relative group">
+                            <li class="relative group ">
                                 <a
                                     href="/speisekartenübersicht"
-                                    class="inline-flex items-center gap-1 lg:px-2 py-2 text-black"
+                                    class="inline-flex items-center gap-1 lg:px-2 py-2 mb-4 lg:mb-0 lg:pe-2 border-b-2 border-b-white/50 lg:border-0"
                                 >
                                     Speisekarten
                                     <svg class="w-4 h-4 transition-transform group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -77,7 +77,7 @@
                                 </ul>
                             </li>
 
-                            <li class="mb-4 lg:mb-0 lg:pe-2 border-b-2 border-b-white/50 lg:border-0" data-twe-nav-item-ref>
+                            <li class="mb-4 lg:mb-0 lg:pe-2 outline-b-2 outline-b-white/50 lg:border-0" data-twe-nav-item-ref>
                                 <a class=" transition underline-link duration-200 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none lg:px-2 {{ request()->is('nächtigen') ? 'underline-link is-active' : '' }}"
                                    href="/nächtigen" data-twe-nav-link-ref>Nächtigen</a>
                             </li>

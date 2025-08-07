@@ -139,7 +139,7 @@
             </div>
             <section id="gallery">
                 <h3 class="text-2xl font-bold lg:pb-2 mx-auto text-center mt-4">Galerie</h3>
-                <div class="pswp-gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-8 w-4/5 mx-auto mt-4 mb-16"
+                <div class="pswp-gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-8 w-4/5 mx-auto lg:mt-4 mb-16"
                     id="roomgallery">
                     <a href="{{ asset('images/rooms/Gaestezimmer1.jpg') }}" data-pswp-width="1024" data-pswp-height="681"
                        target="_blank"

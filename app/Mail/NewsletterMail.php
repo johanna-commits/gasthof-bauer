@@ -15,17 +15,18 @@ class NewsletterMail extends Mailable
     public $newsletterContent;
     public $subject;
     public $newsletterTitle;
-    
+
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($subject, $newsletterTitle, $newsletterContent)
+    public function __construct($subject, $newsletterTitle, $newsletterContent, $subscriber)
     {
         $this->newsletterContent = $newsletterContent;
         $this->newsletterTitle = $newsletterTitle;
         $this->subject = $subject;
+        $this->subscriber = $subscriber;
     }
 
     /**
@@ -45,7 +46,7 @@ class NewsletterMail extends Mailable
     {
         return new Content(
             markdown: 'email/newsletter',
-            with: ['newsletterContent' => $this->newsletterContent, 'newsletterTitle' => $this->newsletterTitle],
+            with: ['newsletterContent' => $this->newsletterContent, 'newsletterTitle' => $this->newsletterTitle, 'subscriber' => $this->subscriber],
         );
     }
 

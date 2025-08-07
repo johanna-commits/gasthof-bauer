@@ -26,10 +26,7 @@ import {
 initTWE({ Collapse, Dropdown });
 
 window.addEventListener('scroll', function() {
-    // Höhe des gescrollten Bereichs
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Winkel der Drehung, z.B. 0.1 Grad pro Pixel
     let rotationAngle = scrollTop * 0.1;
 
     // Das Bild auswählen und die Drehung anwenden
@@ -43,19 +40,14 @@ window.addEventListener('scroll', function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const fadeInElements = document.querySelectorAll('.fading-in');
-    console.log(fadeInElements);
 
     const checkVisibility = () => {
         fadeInElements.forEach((fadeInElement) => {
             const rect = fadeInElement.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             console.log(rect.top, windowHeight, rect.bottom);
-            // Überprüfen, ob das Element in den Sichtbereich gescrollt wurde
             if (rect.top <= windowHeight && rect.bottom >= 0) {
-                console.log('Element ist sichtbar');
-                //fadeInElement.classList.remove('opacity-0'); // Klasse entfernen
                 fadeInElement.classList.add('fade-in');
-                // fadeInElement.classList.add('opacity-1'); // Animation hinzufügen
             }
         });
     };
@@ -63,38 +55,40 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', checkVisibility);
     checkVisibility(); // Initiale Überprüfung, falls das Element bereits sichtbar ist
 });
+window.addEventListener('resize', () => {
+    location.reload(); // Seite neu laden bei Größenwechsel
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // Nur aktivieren, wenn Bildschirm mindestens lg (1024px) ist
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+        const images = document.querySelectorAll('.zoom-image');
+        const body = document.querySelector('body');
+        const texts = document.querySelectorAll('.zoom-text');
 
-document.addEventListener("DOMContentLoaded", function() {
-    const images = document.querySelectorAll('.zoom-image');
-    const body = document.querySelector('body');
-    const texts = document.querySelectorAll('.zoom-text');
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Prüfen, ob das aktuelle Element ein Bild oder ein Text ist und die jeweilige Klasse anwenden
-                    if (entry.target.classList.contains('zoom-image')) {
-                        entry.target.classList.add('zoomed'); // Bild vergrößern
-                    } else if (entry.target.classList.contains('zoom-text')) {
-                        entry.target.classList.add('text-zoomed'); // Text vergrößern oder formatieren
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('zoom-image')) {
+                            entry.target.classList.add('zoomed');
+                        } else if (entry.target.classList.contains('zoom-text')) {
+                            entry.target.classList.add('text-zoomed');
+                        }
+                        body.classList.add('dark-bg');
+                    } else {
+                        if (entry.target.classList.contains('zoom-image')) {
+                            entry.target.classList.remove('zoomed');
+                        } else if (entry.target.classList.contains('zoom-text')) {
+                            entry.target.classList.remove('text-zoomed');
+                        }
+                        body.classList.remove('dark-bg');
                     }
-                    body.classList.add('dark-bg');
-                } else {
-                    // Entferne die jeweilige Klasse beim Verlassen des sichtbaren Bereichs
-                    if (entry.target.classList.contains('zoom-image')) {
-                        entry.target.classList.remove('zoomed');
-                    } else if (entry.target.classList.contains('zoom-text')) {
-                        entry.target.classList.remove('text-zoomed');
-                    }
-                    body.classList.remove('dark-bg');
-                }
-            });
-        },
-        { threshold: 0.5 } // 50% des Elements müssen sichtbar sein, um den Effekt auszulösen
-    );
+                });
+            },
+            { threshold: 0.5 }
+        );
 
-    // Jedes Bild- und Textelement einzeln beobachten
-    images.forEach(image => observer.observe(image));
-    texts.forEach(text => observer.observe(text));
+        images.forEach(image => observer.observe(image));
+        texts.forEach(text => observer.observe(text));
+    }
 });

@@ -13,5 +13,7 @@ class Customer extends Model
         'name',
         'email',
         'title',
+        'unsubscribe_token',
+        'is_subscribed',
     ];
 }

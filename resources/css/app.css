@@ -253,13 +253,18 @@ a.underline-link:focus:after {
 }
 
 .text-zoomed {
-    /* Standard-Stile */
     background-color: rgba(255, 255, 255, 0.85);
     border: 2px solid #fbd56e57;
     z-index: 6;
     position: relative;
     padding: 20px;
     animation: 2s textMove forwards; /* Einblenden mit Animation */
+}
+
+.text-ambiente {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 2px solid #fbd56e57;
+    padding: 20px;
 }
 
 /* Standard-Animation für kleine Bildschirme oder ohne Media Query */

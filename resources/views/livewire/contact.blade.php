@@ -20,9 +20,9 @@
             </div>
         </div>
     </div>
-    <div class="lg:w-2/3 lg:mx-auto w-full">
-        <div class="flex flex-col lg:flex-row mt-12 items-center">
-            <div class="lg:w-1/2 font-thin">
+    <div class="lg:w-2/3 lg:mx-auto w-full p-4 lg:p-0">
+        <div class="flex flex-col lg:flex-row lg:mt-12 lg:items-center">
+            <div class="lg:w-1/2 font-thin p-12 lg:p-0">
                 <h2 class="text-3xl lg:text-5xl font-semibold font-accent mb-4">Kontaktier uns!</h2>
                 <p class="font-semibold text-lg">Gasthof Bauer</p>
                 <p class="font-thin">Familie Trauner</p>
@@ -43,7 +43,7 @@
             </div>
             <div class="lg:w-1/2">
                 <div class="flex items-center justify-end">
-                    <img src="{{ asset('images/Gastgarten.jpg') }}" alt="Gastgarten" class="w-56 mt-4 mb-4 h-auto" />
+                    <img src="{{ asset('images/Gastgarten.jpg') }}" alt="Gastgarten" class="w-full lg:w-56 mt-4 mb-4 h-auto" />
                 </div>
             </div>
         </div>

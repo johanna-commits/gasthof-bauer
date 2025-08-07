@@ -26,10 +26,11 @@ class Newsletter extends Component
 
         $mail = "trauner.jo@gmail.com";
 
-        $subscribers = Customer::all();
+        $subscribers = Customer::where('is_subscribed', true)->get();
+
 
         foreach ($subscribers as $subscriber) {
-            Mail::to($subscriber->email)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter));
+            Mail::to($subscriber->email)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter, $subscriber));
         }
         //Mail::to($mail)->send(new \App\Mail\NewsletterMail($this->subject, $this->title, $this->newsletter));
 

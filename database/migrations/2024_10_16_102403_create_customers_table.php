@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('title');
-            $table->string('newsLetter')->default('on');
+            $table->boolean('is_subscribed')->default(true);
+            $table->uuid('unsubscribe_token')->nullable();
         });
     }
 
