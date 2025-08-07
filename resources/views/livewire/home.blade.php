@@ -4,11 +4,11 @@
         </div>
         <div class="relative flex-grow">
             <div class="relative h-full  flex-grow">
-                <img src="{{ asset('images/Schild.png') }}" alt="Schild"
+                <img src="{{ asset('images/Schild_Cover2.jpg') }}" alt="Schild"
                     class="object-cover w-full h-full hidden lg:flex" loading="lazy" />
                 <img src="{{ asset('images/Schild_Handy2.jpg') }}" alt="Schild"
                      class="object-cover w-full h-full lg:hidden" loading="lazy" />
-                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <div class="absolute inset-0 bg-black opacity-60"></div>
                 <div class="absolute inset-0 flex flex-col justify-center">
                     <h2
                         class="text-white text-xl mb-4 self-center lg:text-5xl  lg:pr-56 lg:self-center lg:pt-12 lg:pl-24 font-sans font-thin fade-in">

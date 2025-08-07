@@ -41,9 +41,9 @@
                     <a class="hover:underline" href="tel:+436509120977">+43 6509120977</a>
                 </div>
             </div>
-            <div class="lg:w-1/2">
-                <div class="flex items-center justify-end">
-                    <img src="{{ asset('images/Gastgarten.jpg') }}" alt="Gastgarten" class="w-full lg:w-56 mt-4 mb-4 h-auto" />
+            <div class="hidden lg:block lg:w-1/2">
+                <div class="flex items-center justify-end lg:ml-12">
+                    <img src="{{ asset('images/Schild_Cover2.jpg') }}" alt="Gastgarten" class="w-full  mt-4 mb-4 h-auto" />
                 </div>
             </div>
         </div>

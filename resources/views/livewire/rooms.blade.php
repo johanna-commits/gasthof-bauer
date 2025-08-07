@@ -146,10 +146,10 @@
                        class="block overflow-hidden shadow-lg transition-transform transform hover:scale-105">
                         <img src="{{ asset('images//rooms/Gaestezimmer1.jpg') }}" alt="Fremdenzimmer" class="w-full h-64 object-cover" />
                     </a>
-                    <a href="{{ asset('images/Zimmerküche.jpg') }}" data-pswp-width="1280" data-pswp-height="857"
+                    <a href="{{ asset('images/Zimmerkueche.jpg') }}" data-pswp-width="1280" data-pswp-height="857"
                         target="_blank"
                         class="block overflow-hidden shadow-lg transition-transform transform hover:scale-105">
-                        <img src="{{ asset('images/Zimmerküche.jpg') }}" alt="Küche im Fremdenzimmer"
+                        <img src="{{ asset('images/Zimmerkueche.jpg') }}" alt="Küche im Fremdenzimmer"
                             class="w-full h-64 object-cover" />
                     </a>
                     <a href="{{ asset('images/rooms/Gaestezimmer2.jpg') }}" data-pswp-width="790" data-pswp-height="621"

@@ -11,7 +11,6 @@
                         Speisen
                     </h1>
                 </div>
-
             </div>
         </div>
     </div>
@@ -75,7 +74,7 @@
             </div>
             <div  data-pswp-width="1024" data-pswp-height="681"
                   class="block overflow-hidden shadow-lg transition-transform transform hover:scale-120">
-                <img src="{{ asset('images/Scholle.png') }}" alt="Scholle" class="w-full h-64 object-cover" />
+                <img src="{{ asset('images/food/Gans.JPEG') }}" alt="Gans" class="w-full h-64 object-cover" />
             </div>
             <div  data-pswp-width="1024" data-pswp-height="681"
                class="block overflow-hidden shadow-lg transition-transform transform hover:scale-120">
